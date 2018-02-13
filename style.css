@@ -1,0 +1,42 @@
+body {
+    
+}
+
+
+.divScrollspy {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+
+  .starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+.project-list > li{
+    width:200px;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 2em;
+    vertical-align: middle;
+}
+.project-list > button{
+    margin-right: 20px;
+}
+.center-pills{
+    display: inline-block; 
+}
+#spider_content{
+    width:100% !important;
+    display: none;
+}
+.syntaxhighlighter {
+    width: 100% !important;
+    margin: 1em 0 1em 0 !important;
+    position: relative !important;
+    overflow: auto !important;
+    font-size: 1em !important;
+    border: 1px solid #808080 !important;
+    max-height: 600px;
+}
