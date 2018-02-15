@@ -285,7 +285,7 @@ function listversions()
                     {
                         var one_item = '<tr>';
                             one_item += '<td>'+val+'</td>';
-                            one_item += '<td><button type="button" class="btn btn-danger" onclick="javascript:delversion('+val+');"> <i class="fa fa-trash"></i> </button></td>';
+                            one_item += '<td><button type="button" class="btn btn-danger btn-sm" onclick="javascript:delversion('+val+');"> <i class="fa fa-trash"></i> </button></td>';
                         one_item += '</tr>';
                         $('#project_versions').append(one_item);
                     });
@@ -332,7 +332,7 @@ function listspiders()
                     //items.push('<li id="' + val + '"><button type="button" class="btn btn-success" onclick="javascript:schedule(\''+val+'\');"><i class="fa fa-play"></i> Start ' + val + ' spider</button></li>');
                     var one_item = '<tr>';
                         one_item += '<td>'+val+'</td>';
-                        one_item += '<td><button type="button" class="btn btn-success" onclick="javascript:schedule(\''+val+'\');"> <i class="fa fa-play"></i> </button></td>';
+                        one_item += '<td><button type="button" class="btn btn-success btn-sm" onclick="javascript:schedule(\''+val+'\');"> <i class="fa fa-play"></i> </button></td>';
                     one_item += '</tr>';
                     $('#available_spiders').append(one_item);
 
@@ -383,14 +383,14 @@ function listjobs()
                         one_item = '<tr>';
                             one_item += '<td>'+val.spider+'</td>';
                             one_item += '<td>'+val.id+'</td>';
-                            one_item += '<td><button type="button" class="btn btn-danger" onclick="javascript:cancel(\''+val.id+'\');"> <i class="fa fa-trash"></i> </button></td>';
+                            one_item += '<td><button type="button" class="btn btn-danger btn-sm" onclick="javascript:cancel(\''+val.id+'\');"> <i class="fa fa-trash"></i> </button></td>';
                         one_item += '</tr>';
                         $('#pending_spiders').append(one_item);
                     });
                 }
                 else
                 {
-                    $('#pending_spiders').append('<tr><td colspan="3">No Pending spiders</td></tr>');
+                    $('#pending_spiders').append('<tr><td colspan="3"><div class="alert alert-info">No Pending spiders</div></td></tr>');
                 }
 
                 /* RUNNING JOBS */
@@ -404,8 +404,8 @@ function listjobs()
                             one_item += '<td>'+val.spider+'</td>';
                             one_item += '<td>'+start_time.format("DD/MM/YYYY HH:mm:ss")+'</td>';
                             one_item += '<td>'+val.id+'</td>';
-                            one_item += '<td><button type="button" class="btn btn-warning" onclick="javascript:show_log(\''+scrapyd_url+'logs/'+current_project_name+'/'+val.spider+'/'+val.id+'.log\');"> <i class="fa fa-fast-forward"></i> </button></td>';
-                            one_item += '<td><button type="button" class="btn btn-danger" onclick="javascript:cancel(\''+val.id+'\');"> <i class="fa fa-trash"></i> </button></td>';
+                            one_item += '<td><button type="button" class="btn btn-warning btn-sm" onclick="javascript:show_log(\''+scrapyd_url+'logs/'+current_project_name+'/'+val.spider+'/'+val.id+'.log\');"> <i class="fa fa-fast-forward"></i> </button></td>';
+                            one_item += '<td><button type="button" class="btn btn-danger btn-sm" onclick="javascript:cancel(\''+val.id+'\');"> <i class="fa fa-trash"></i> </button></td>';
                         one_item += '</tr>';
                         $('#running_spiders').append(one_item);
 
@@ -440,9 +440,9 @@ function listjobs()
                             one_item += '<td>'+start_time.format("DD/MM/YYYY HH:mm:ss")+'</td>';
                             one_item += '<td>'+dif+'</td>';
                             one_item += '<td>'+val.id+'</td>';
-                            one_item += '<td><button type="button" class="btn btn-warning" onclick="javascript:show_log(\''+scrapyd_url+'logs/'+current_project_name+'/'+val.spider+'/'+val.id+'.log\');"> <i class="fa fa-fast-forward"></i> </button></td>';
-                            one_item += '<td><button type="button" class="btn btn-success" onclick="javascript:show_items(\''+scrapyd_url+'items/'+current_project_name+'/'+val.spider+'/'+val.id+'.jl\');"> <i class="fa fa-eject"></i> </button></td>';
-                            one_item += '<td><button type="button" class="btn btn-danger" onclick="javascript:cancel(\''+val.id+'\');"> <i class="fa fa-times"></i> </button></td>';
+                            one_item += '<td><button type="button" class="btn btn-warning btn-sm" onclick="javascript:show_log(\''+scrapyd_url+'logs/'+current_project_name+'/'+val.spider+'/'+val.id+'.log\');"> <i class="fa fa-fast-forward"></i> </button></td>';
+                            one_item += '<td><button type="button" class="btn btn-success btn-sm" onclick="javascript:show_items(\''+scrapyd_url+'items/'+current_project_name+'/'+val.spider+'/'+val.id+'.jl\');"> <i class="fa fa-eject"></i> </button></td>';
+                            one_item += '<td><button type="button" class="btn btn-danger btn-sm" onclick="javascript:cancel(\''+val.id+'\');"> <i class="fa fa-times"></i> </button></td>';
                         one_item += '</tr>';
                         $('#finished_spiders').append(one_item);
                     });

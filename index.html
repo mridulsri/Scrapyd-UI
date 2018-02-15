@@ -10,45 +10,54 @@
     <link href="./fa5/css/fontawesome-all.css" rel="stylesheet">
     <!-- BOOTSTRAP -->
     <link href="./bs4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,700" rel="stylesheet">
     <!-- SYNTAX HIGHLIGHTER -->
     <!--<link href="http://agorbatchev.typepad.com/pub/sh/3_0_83/styles/shCore.css" rel="stylesheet">
     <link href="http://agorbatchev.typepad.com/pub/sh/3_0_83/styles/shThemeDefault.css" rel="stylesheet">
     <link href="http://agorbatchev.typepad.com/pub/sh/3_0_83/styles/shThemeRDark.css" rel="stylesheet">-->
     <!-- STYLE -->
-    <link href="./style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand mb-0 h1" href="#">Scrapyd-UI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav justify-content-center mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Add</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Remove</a>
-                </li>
-                <li class="nav-item active">
-                    <input class="form-control" type="text" placeholder="Scrapyd Url" aria-label="Search" id="scrapydurl">
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <select id="projects" class="form-control">
+    <!--Header Section-->
+    <header>
+        <div class="row justify-content-md-center">
+            <!--Logo-->
+            <div class="col-sm-3">
+                <a class="navbar-brand mb-0 h1" href="#">Scrapyd<span>-</span><b>UI</b></a>
+            </div>
+            <!--Search URL-->
+            <div class="col-sm-4">
+                <input class="form-control form-control-sm showurl" type="text" placeholder="Scrapyd Url" aria-label="Search" id="scrapydurl">
+            </div>
+            <div class="col-sm-3"></div>
+            <!--select project-->
+            <div class="col-sm-2">
+                <select id="projects" class="form-control form-control-sm" style="margin-top: 5px;">
                     <option value="default">Select-Project</option>
                 </select>
-            </form>
+            </div>
         </div>
+    </header>
+    <nav>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="btn btn-success btn-sm" href="#" role="button"><i class="fas fa-plus"></i> Add</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-danger btn-sm" href="#" role="button"><i class="far fa-trash-alt"></i> Delete</a>
+            </li>
+        </ul>
     </nav>
-    <main role="main" class="container-fluid">
+    <!--END//-Header Section-->
+
+    <div role="main" class="container-fluid">
         <div class="row">
             <div class="col-sm-3">
                 <div class="border border-success rounded-top">
-                    <div class="p-2 mb-2 bg-info text-white">
+                    <div class="p-2 mb-2 bg-head text-white">
                         <h5>Spiders</h5>
                     </div>
                     <div style="max-height:600px; overflow-y:auto">
@@ -67,100 +76,87 @@
                 </div>
             </div>
             <div class="col-sm-9">
-                <div class="row">
-                    <div class="col-sm-12 border border-success rounded-top">
-                        <div class="p-2 mb-2 bg-info text-white text-center">
-                            <nav id="navbar-example2" class="navbar navbar-expand-sm justify-content-center">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a href="#pending" class="text-white">
-                                            <i class="fa fa-filter"></i> Pending
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#running" class="text-white">
-                                            <i class="fa fa-refresh"></i> Running
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#finished" class="text-white">
-                                            <i class="fa fa-thumbs-up"></i> Finished
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                <div class="container-fluid">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#pending">Pending</a></li>
+                        <li class="nav-link"><a data-toggle="tab" href="#running">Running</a></li>
+                        <li class="nav-link"><a data-toggle="tab" href="#finished">Finished</a></li>
+                    </ul>
+
+                    <!--Pending-->
+                    <div class="tab-content  border border-success rounded-top bg-white">
+                        <div id="pending" class="tab-pane in active">
+                            <table class="table table-condensed table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Spider</th>
+                                        <th>Id</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pending_spiders">
+                                    <!-- DYNAMICALLY LOADED DATA -->
+                                </tbody>
+                            </table>
                         </div>
-                        <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" style="height: 300px;overflow-y: scroll;">
-                            <!-- PENDING SPIDERS -->
-                            <div class="container-fluid bg-warning" id="pending">
-                                <!--<ul id="pending_spiders"></ul>-->
-                                <table class="table table-condensed table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Spider</th>
-                                            <th>Id</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="pending_spiders">
-                                        <!-- DYNAMICALLY LOADED DATA -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- RUNNING SPIDERS -->
-                            <div class="container-fluid bg-success" id="running">
-                                <!--<ul id="running_spiders"></ul>-->
-                                <table class="table table-condensed table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Spider</th>
-                                            <th>Start</th>
-                                            <th>Id</th>
-                                            <th>Log</th>
-                                            <th>Cancel</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="running_spiders">
-                                        <!-- DYNAMICALLY LOADED DATA -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- FINISHED SPIDERS -->
-                            <div class="container-fluid bg-secondary" id="finished">
-                                <table class="table table-condensed table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Spider</th>
-                                            <th>Start</th>
-                                            <th>Duration</th>
-                                            <th>Id</th>
-                                            <th>Log</th>
-                                            <th>Item</th>
-                                            <th>Cancel</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="finished_spiders">
-                                        <!-- DYNAMICALLY LOADED DATA -->
-                                    </tbody>
-                                </table>
-                            </div>
+                        
+                        <!--Running-->
+                        <div id="running" class="tab-pane fade">
+                            <table class="table table-condensed table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Spider</th>
+                                        <th>Start</th>
+                                        <th>Id</th>
+                                        <th>Log</th>
+                                        <th>Cancel</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="running_spiders">
+                                    <!-- DYNAMICALLY LOADED DATA -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!--Finished-->
+                        <div id="finished" class="tab-pane fade">
+                            <table class="table table-condensed table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Spider</th>
+                                        <th>Start</th>
+                                        <th>Duration</th>
+                                        <th>Id</th>
+                                        <th>Log</th>
+                                        <th>Item</th>
+                                        <th>Cancel</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="finished_spiders">
+                                    <!-- DYNAMICALLY LOADED DATA -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 border border-success rounded-top">
-                        <div class="p-2 mb-2 bg-info text-white">
-                            <h5 id="spider_file"></h5>
-                        </div>
-                        <div id="spider_content">
-                            <pre class="brush: bash"></pre>
-                            <iframe id="spider_content_iframe"></iframe>
-                        </div>
 
+                    <div class="row">
+                        <div class="col-sm-12 border border-success rounded-top">
+                            <div class="p-2 mb-2 bg-info text-white">
+                                <h5 id="spider_file"></h5>
+                            </div>
+                            <div id="spider_content">
+                                <pre class="brush: bash"></pre>
+                                <iframe id="spider_content_iframe"></iframe>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+
+
+
     <!-- SPECIAL DIV TO CENTER SPINNER  -->
     <div id="centerSpin" style="position:fixed;top:50%;left:50%;z-index:15000;"></div>
 </body>
