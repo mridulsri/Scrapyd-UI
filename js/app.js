@@ -29,7 +29,8 @@ $(document).ready(function()
        }
        else
        {
-            show_project(this.value);
+           show_project(this.value);
+           current_project_name = this.value;
        }     
     });
 
@@ -118,7 +119,7 @@ function schedule(spider)
         {
             $.post(
                 scrapyd_url + 'schedule.json', 
-                { project : current_project_name, spider : spider }
+                { project: current_project_name, spider: spider, settings: 'JOBDIR=crawls/' + spider + '-1' }
             ).done(function( data )
             {
                 if(data.status==="ok")
